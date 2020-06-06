@@ -1,21 +1,44 @@
 <!doctype html>
 
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
+    <meta charset="utf-8">
 
-  <title>Vue.js tutorials</title>
-
-  <link rel="stylesheet" href="style/style.css">
+    <title>Vue.js tutorials</title>
+    <link rel="stylesheet" href="style/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 </head>
 
 <body>
 
-    <div>
-        <h1>Hello Vue.js</h1>
+    <div id="root" class="vue-box">
+        <h1>{{message}}</h1>
+        <span v-bind:title='title'>
+            If you hover over this text for few seconds, title will apear
+        </span>
+        <input v-model='message'>
+
+        <!---V-if is used when you need to render only one div to the dom
+            V-show is used when item css property is set to display:none or othervise--->
+        <p v-if='count === 1'>Green</p>
+        <p v-else-if='count === 2'>Red</p>
+        <p v-else>Blue</p>
+        <p v-show='count === 3'>Show or not</p>
     </div>
 
-  <script src="js/index.js"></script>
+    <div id="div2" class="vue-box">
+        <h2>Sign up</h2>
+        <input v-model='email' :class="[email.length < 4 ? 'red' : 'green']">
+        <br>
+        <!--v-bind can be shortcuted with a colon -->
+        <button onclick="alert('you signed up')" :disabled='email.length<4'>Submit</button>
+
+    </div>
+
+    <script src="js/index.js"></script>
+
 </body>
+
 </html>
