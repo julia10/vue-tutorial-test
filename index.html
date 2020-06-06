@@ -30,10 +30,26 @@
 
     <div id="div2" class="vue-box">
         <h2>Sign up</h2>
+        <p v-text="email">
+
+        </p>
         <input v-model='email' :class="[email.length < 4 ? 'red' : 'green']">
         <br>
-        <!--v-bind can be shortcuted with a colon -->
+        <!--v-bind can be shortcuted with a colon :disabled -->
         <button onclick="alert('you signed up')" :disabled='email.length<4'>Submit</button>
+
+    </div>
+
+
+    <div id="div3" class="vue-box">
+        <!--v-on directive has a shortcut for @-->
+        {{kittifiedName}}
+        <br>
+        <input v-model="newCat" v-on:keyup.enter="addCat">
+        <button @click="addCat">+ ADD</button>
+        <ol>
+            <li v-for="cat in cats">{{ cat.name | capitalize }}</li>
+        </ol>
 
     </div>
 
