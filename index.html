@@ -51,6 +51,20 @@
             <li v-for="cat in cats">{{ cat.name | capitalize }}</li>
         </ol>
 
+        <cats-list v-bind:list = 'cats'></cats-list>
+       
+
+    </div >
+        
+
+    <div id="div4" class="vue-box">
+        <button-counter></button-counter>
+
+        <blog-title
+        v-for = 'post in posts'
+        v-bind:title = 'post.title'
+        v-bind:id = 'post.id'
+        ></blog-title>
     </div>
 
     <script src="js/index.js"></script>

@@ -13,6 +13,18 @@ var app2 = new Vue({
     email: ''
   }
 })
+//
+// Cats
+//
+
+Vue.component('cats-list', {
+  props: ['list'],
+  template: `
+  <ul>
+    <li v-for = 'cat in list'> {{cat.name}} </li>
+  </ul>
+  `
+})
 
 var app3 = new Vue({
   el: "#div3",
@@ -25,6 +37,10 @@ var app3 = new Vue({
     ],
     newCat: '',
   },
+
+  component: [
+    'cat-list'
+  ],
 
   methods: {
     addCat: function () {
@@ -47,5 +63,33 @@ var app3 = new Vue({
         }
       }
     }
+  }
+})
+
+// Components
+// Define a new component called button-counter
+Vue.component('button-counter', {
+  data: function () {
+    return {
+      count: 0
+    }
+  },
+  template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+})
+
+Vue.component('blog-title', {
+  props: ['title'],
+  template: "<h1 class='red'>{{title}}</h1>"
+})
+
+
+var app4 = new Vue({
+  el: '#div4',
+  data: {
+    posts: [
+      { id: 1, title: 'The sun is bright' },
+      { id: 2, title: 'My mum is lovely' },
+      { id: 3, title: 'I love my husband' }
+    ]
   }
 })
